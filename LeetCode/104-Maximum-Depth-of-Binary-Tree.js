@@ -1,4 +1,4 @@
-// Note: includes global variable so doesn't pass all of LeetCode tests
+// Note: using a function inside of maxDepth to avoid global variables
 
 /**
  * Definition for a binary tree node.
@@ -11,54 +11,56 @@
  * @param {TreeNode} root
  * @return {number}
  */
- 
-let binaryTreeMaxDepth = 0;
 
-var maxDepth = function(root, currentDepth) {
+var maxDepth = function(root) {
     // Plan: in-order traversal through the tree incrementing current depth. When a leaf is reached check if it's greater than the maxDepth path and update.
     
-    // create a maxDepth variable outside of function 
-    
-    // if root doesn't exist and an empty tree is passed in
-        // return 0;
-    // if currentDepth is undefined(at the root node of the binary tree)
-        // set currentDepth to 1
-    // else
-        // increment currentDepth by 1
-    // if root has a left node
-        // recurse on left node and pass in currentDepth
-    // if root has a right node
-        // recurse on right node and pass in currentDepth
-    // if root has no children
-        // if currentDepth id greater than binaryTreeMaxDepth
-            // set binaryTreeMaxDepth to currentDepth
+    // maxDepth variable 
+    // traversal function(root, currentDepth)
+        // if root doesn't exist and an empty tree is passed in
+            // return 0;
+        // if currentDepth is undefined(at the root node of the binary tree)
+            // set currentDepth to 1
+        // else
+            // increment currentDepth by 1
+        // if root has a left node
+            // recurse on left node and pass in currentDepth
+        // if root has a right node
+            // recurse on right node and pass in currentDepth
+        // if root has no children
+            // if currentDepth id greater than binaryTreeMaxDepth
+                // set binaryTreeMaxDepth to currentDepth
+    // invoke traversal function passing in root
     // return binaryTreeMaxDepth
 
-    binaryTreeMaxDepth = 0;
+    let binaryTreeMaxDepth = 0;
 
-    if(!root) {
-        return 0;
-    }
-    
-    if(!currentDepth) {
-        currentDepth = 1;
-    } else {
-        currentDepth++;
-    }
-    
-    if(root.left) {
-        maxDepth(root.left, currentDepth);
-    }
-    if(root.right) {
-        maxDepth(root.right, currentDepth);
-    }
-    if(!root.left && !root.right) {
-        if(currentDepth > binaryTreeMaxDepth) {
-            binaryTreeMaxDepth = currentDepth;
+    const traverseTree = (root, currentDepth) => {
+        if(!root) {
+            return 0;
+        }
+        
+        if(!currentDepth) {
+            currentDepth = 1;
+        } else {
+            currentDepth++;
+        }
+        
+        if(root.left) {
+            traverseTree(root.left, currentDepth);
+        }
+        if(root.right) {
+            traverseTree(root.right, currentDepth);
+        }
+        if(!root.left && !root.right) {
+            if(currentDepth > binaryTreeMaxDepth) {
+                binaryTreeMaxDepth = currentDepth;
+            }
         }
     }
+
+    traverseTree(root);
     return binaryTreeMaxDepth;
-    
 };
 
 
@@ -79,4 +81,4 @@ bt.right.left = new BinaryTree(70);
 bt.right.left.left = new BinaryTree(100);
 bt.right.left.left.left = new BinaryTree(200);
 // console.log(bt); 
-// console.log(maxDepth(bt));
+console.log(maxDepth(bt));
