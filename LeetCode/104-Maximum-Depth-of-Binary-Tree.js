@@ -21,12 +21,10 @@ var maxDepth = function(root) {
             // return 0;
         // if currentDepth is undefined(at the root node of the binary tree)
             // set currentDepth to 1
-        // else
-            // increment currentDepth by 1
         // if root has a left node
-            // recurse on left node and pass in currentDepth
+            // recurse on left node and pass in currentDepth + 1
         // if root has a right node
-            // recurse on right node and pass in currentDepth
+            // recurse on right node and pass in currentDepth + 1
         // if root has no children
             // if currentDepth id greater than binaryTreeMaxDepth
                 // set binaryTreeMaxDepth to currentDepth
@@ -42,15 +40,13 @@ var maxDepth = function(root) {
         
         if(!currentDepth) {
             currentDepth = 1;
-        } else {
-            currentDepth++;
         }
         
         if(root.left) {
-            traverseTree(root.left, currentDepth);
+            traverseTree(root.left, currentDepth + 1);
         }
         if(root.right) {
-            traverseTree(root.right, currentDepth);
+            traverseTree(root.right, currentDepth + 1);
         }
         if(!root.left && !root.right) {
             if(currentDepth > binaryTreeMaxDepth) {
