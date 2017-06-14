@@ -15,11 +15,11 @@
  
 var hasPathSum = function(root, sum) {
     // Plan: in order traversal through the tree through all paths keeping track of total so far and return true if total equals sum and are at a leaf node
-
+    
+    // if root doesn't exist(empty tree)
+        // return false;
     // set hasPathSumResult variable as false
     // traverse tree function(root, sum and totalSoFar)
-        // if root doesn't exist(empty tree)
-            // return false;
         // if totalSoFar is undefined(initial call to hasPathSum where root is the root of binary tree passed in)
             // set totalSoFar to root.val
         // else
@@ -34,12 +34,13 @@ var hasPathSum = function(root, sum) {
     // invoke traverseTree passing in root and sum
     // return hasPathSumResult
 
+    if(!root) {
+        return false;
+    }
+
     let hasPathSumResult = false;
 
     const traverseTree = (root, sum, totalSoFar) => {
-        if(!root) {
-            return false;
-        }
         // console.log('root:', root);
         if(!totalSoFar) {
             totalSoFar = root.val;

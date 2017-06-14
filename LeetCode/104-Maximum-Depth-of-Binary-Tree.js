@@ -15,10 +15,10 @@
 var maxDepth = function(root) {
     // Plan: in-order traversal through the tree incrementing current depth. When a leaf is reached check if it's greater than the maxDepth path and update.
     
+    // if root doesn't exist and an empty tree is passed in
+        // return 0;
     // maxDepth variable 
     // traversal function(root, currentDepth)
-        // if root doesn't exist and an empty tree is passed in
-            // return 0;
         // if currentDepth is undefined(at the root node of the binary tree)
             // set currentDepth to 1
         // if root has a left node
@@ -31,13 +31,13 @@ var maxDepth = function(root) {
     // invoke traversal function passing in root
     // return binaryTreeMaxDepth
 
+    if(!root) {
+        return 0;
+    }
+
     let binaryTreeMaxDepth = 0;
 
     const traverseTree = (root, currentDepth) => {
-        if(!root) {
-            return 0;
-        }
-        
         if(!currentDepth) {
             currentDepth = 1;
         }

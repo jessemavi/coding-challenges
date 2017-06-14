@@ -15,12 +15,13 @@
 var pathSum = function(root, sum) {
     // Plan: traverse through the tree pre-order adding elements to a stack and keeping track of the sum so far. Once you reach a leaf node check if the sum so far equals the sum. If so add a copy of the stack to the result array. Pop off the stack at the end of each call 
 
+    // if !root
+        // return empty array
+
     // result array
     // stack
 
     // traverseTree function(root, totalSoFar)
-        // if !root
-            // return empty array
         // if !totalSoFar
             // set it to the root val
         // else
@@ -39,14 +40,14 @@ var pathSum = function(root, sum) {
     // invoke traverseTree passing in root
     // return result array
 
+    if(!root) {
+        return [];
+    }
+
     let result = [];
     let stack = [];
 
     const traverseTree = (root, totalSoFar) => {
-        if(!root) {
-            return [];
-        }
-
         if(!totalSoFar) {
             totalSoFar = root.val;
         } else {
