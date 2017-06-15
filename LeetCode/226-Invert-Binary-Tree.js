@@ -11,52 +11,52 @@
  */
 var invertTree = function(root) {
     // if !root
-      // return null
+        // return null
 
     // if root.left and root.right
-      // swap nodes
+        // swap nodes
 
-    // ***handle cases where one child exists and the doesn't(still need to swap nodes) need to do an if/else so you only do one swap and don't swap back into the initial tree structure before entering the if/else block
+    // ***Handle cases where one child exists and the other doesn't(still need to swap nodes). Need to do an if/else block so you only do one swap and don't swap back into the initial tree structure before entering the if/else block
     // if root.left and !root.right
-      // set root.right to root.left
-      // set root.left to null
+        // set root.right to root.left
+        // set root.left to null
     // else if root.right and !root.left
-      // set root.left to root.right
-      // set root.right to null
+        // set root.left to root.right
+        // set root.right to null
 
     // if root.left
-      // recurse on root.left
+        // recurse on root.left
     // if root.right
-      // recurse on root.right
+        // recurse on root.right
 
     // return inverted binary tree;
 
     if(!root) {
-      return null;
+        return null;
     }
 
     // console.log(root);
 
     if(root.left && root.right) {
-      let temp = root.left;
-      root.left = root.right;
-      root.right = temp;
+        let temp = root.left;
+        root.left = root.right;
+        root.right = temp;
     }
     if(root.left && !root.right) {
-      root.right = root.left;
-      root.left = null;
-      // console.log('root after right set to left and left set to null', root);
+        root.right = root.left;
+        root.left = null;
+        // console.log('root after right set to left and left set to null', root);
     } else if(root.right && !root.left) {
-      root.left = root.right;
-      root.right = null;
-      // console.log('root after left set to right and right set to null', root);
+        root.left = root.right;
+        root.right = null;
+        // console.log('root after left set to right and right set to null', root);
     }
 
     if(root.left) {
-      invertTree(root.left);
+        invertTree(root.left);
     }
     if(root.right) {
-      invertTree(root.right);
+        invertTree(root.right);
     }
 
     return root;
@@ -100,4 +100,4 @@ bt2.left.left = new BinaryTree(4);
 bt2.left.right = new BinaryTree(5);
 bt2.right = new BinaryTree(3);
 bt2.right.left = new BinaryTree(6);
-console.log(invertTree(bt2));
+// console.log(invertTree(bt2));
