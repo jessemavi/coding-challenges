@@ -21,11 +21,11 @@ var judgeCircle = function(moves) {
     // iterate over moves string
         // if move is 'U'
             // subtract 1 from currentRobotPosition[0]
-        // if move is 'D'
+        // else if move is 'D'
             // add 1 from currentRobotPosition[0]
-        // if move is 'L'
+        // else if move is 'L'
             // subtract 1 from currentRobotPosition[1]
-        // if move is 'R'
+        // else if move is 'R'
             // add 1 from currentRobotPosition[1]
 
     // if currentRobotPosition is [0,0]
@@ -38,14 +38,11 @@ var judgeCircle = function(moves) {
     for(let i = 0; i < moves.length; i++) {
         if(moves[i] === 'U') {
             currentRobotPosition[0]--;
-        }
-        if(moves[i] === 'D') {
+        } else if(moves[i] === 'D') {
             currentRobotPosition[0]++;
-        }
-        if(moves[i] === 'L') {
+        } else if(moves[i] === 'L') {
             currentRobotPosition[1]--;
-        }
-        if(moves[i] === 'R') {
+        } else if(moves[i] === 'R') {
             currentRobotPosition[1]++;
         }
     }
