@@ -3,7 +3,7 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = function(matrix) {
-    // Plan: iterate over the matrix. If a zero is found DFS in all four directions changing values to zero.
+    // Plan: iterate over the matrix. If a zero is found add its row and column to an array. Go through the array and set row and column to zero for each zero.
 
     // Psuedocode:
     // coordinatesToSet array
