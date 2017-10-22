@@ -8,7 +8,7 @@ var setZeroes = function(matrix) {
     // Psuedocode:
     // coordinatesToSet array
 
-    // setRowAndColumn function(matrix, row, column):
+    // setRowAndColumn function(row, column):
         // iterate over matrix row
             // set each value to 0
         // iterate over matrix column
@@ -20,11 +20,11 @@ var setZeroes = function(matrix) {
                 // store row and column position in a tuple in coordinatesToSet array
 
     // iterate over coordinatesToSet
-        // invoke setRowAndColumn with matrix, row, column
+        // invoke setRowAndColumn with row, column
 
     const coordinatesToSet = [];
 
-    const setRowAndColumn = (matrix, row, column) => {
+    const setRowAndColumn = (row, column) => {
         for(let i = 0; i < matrix[row].length; i++) {
             matrix[row][i] = 0;
         }
@@ -43,7 +43,7 @@ var setZeroes = function(matrix) {
     }
 
     for(let k = 0; k < coordinatesToSet.length; k++) {
-        setRowAndColumn(matrix, coordinatesToSet[k][0], coordinatesToSet[k][1]);
+        setRowAndColumn(coordinatesToSet[k][0], coordinatesToSet[k][1]);
     }
 
     return matrix;
