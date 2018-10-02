@@ -35,28 +35,34 @@ var levelOrder = function(root) {
     // return nodeValues
 
     if(!root) {
-        return [];
+      return [];
     }
 
-    const nodeValues = [];
+    const node_values_by_level = [];
 
-    const treeTraversal = (node, currentLevel) => {
-        if(!nodeValues[currentLevel]) {
-            nodeValues[currentLevel] = [node.val];
+    const bfs = (s) => {
+      const queue = [[s, 0]];
+      while(queue.length > 0) {
+        const v = queue.shift();
+        
+        if(node_values_by_level[v[1]] === undefined) {
+          node_values_by_level[v[1]] = [v[0].val];
         } else {
-            nodeValues[currentLevel].push(node.val);
+          node_values_by_level[v[1]].push(v[0].val);
         }
-        if(node.left) {
-            treeTraversal(node.left, currentLevel + 1);
+          
+        if(v[0].left) {
+          queue.push([v[0].left, v[1] + 1]);
         }
-        if(node.right) {
-            treeTraversal(node.right, currentLevel + 1);
+        if(v[0].right) {
+          queue.push([v[0].right, v[1] + 1]);
         }
+      }
     };
 
-    treeTraversal(root, 0);
+    bfs(root);
 
-    return nodeValues;
+    return node_values_by_level;
 };
 
 
